@@ -15,6 +15,11 @@ pipeline {
                 sh "mvn test"
             }
         }
+        stage('Creating package') {
+            steps {
+                sh "mvn package"
+            }
+        }
         stage('sending test analysis to SonarQube') {
             steps {
                 withSonarQubeEnv('sonar') {
@@ -22,11 +27,7 @@ pipeline {
                 }
             }
         }
-        stage('Creating package') {
-            steps {
-                sh "mvn package"
-            }
-        }
+
         stage('ArchiveArtifact'){
             steps {
                     sh "mvn surefire-report:report"
