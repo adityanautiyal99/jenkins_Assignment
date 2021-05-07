@@ -82,7 +82,7 @@ pipeline {
             notifyFailed()
         }
         always{
-            publishHTML(target : [allowMissing: false, alwaysLinkToLastBuild: true, includes: '**/*.html', keepAll: false, reportDir: '/var/lib/jenkins/workspace/pi/target/site', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
+            publishHTML(target : [allowMissing: false, alwaysLinkToLastBuild: true, keepAll: false, reportDir: '/var/lib/jenkins/workspace/pi/target/site', reportFiles: 'surefire-report.html', reportName: 'HTML Report', reportTitles: ''])
         }
     }
 }
