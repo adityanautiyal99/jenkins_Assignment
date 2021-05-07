@@ -68,10 +68,10 @@ pipeline {
                             "target": "aditya/Build_${BUILD_NUMBER}"
                         }
                     ]
-                }'''
-                )
+                }''' 
+                )*/
             }
-        }*/
+        }
     }
     post {
         success {
