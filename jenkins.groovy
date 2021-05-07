@@ -4,14 +4,15 @@ pipeline {
         stage('cloning spring3hibernate and compiling the code') {
             steps {
                 git 'https://github.com/opstree/spring3hibernate.git'
-                sh "mvn clean"
-                sh "mvn compile"
+                sh '''
+                mvn clean
+                mvn compile
+                '''
             }
         }
-        stage('Testing the code and creating package') {
+        stage('Testing the code') {
             steps {
                 sh "mvn test"
-                sh "mvn package"
             }
         }
         stage('sending test analysis to SonarQube') {
@@ -19,6 +20,11 @@ pipeline {
                 withSonarQubeEnv('sonar') {
                     sh "mvn sonar:sonar"
                 }
+            }
+        }
+        stage('Creating package') {
+            steps {
+                sh "mvn package"
             }
         }
         stage('ArchiveArtifact'){
