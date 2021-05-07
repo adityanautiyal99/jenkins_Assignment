@@ -34,7 +34,7 @@ pipeline {
               }
             }
         }*/
-       stage("Uploading Artifact"){
+       /*stage("Uploading Artifact"){
             steps{
                 rtServer (
                 id: 'key',
@@ -72,7 +72,7 @@ pipeline {
                 }'''
                 )
             }
-        }
+        }*/
     }
     post {
         success {
